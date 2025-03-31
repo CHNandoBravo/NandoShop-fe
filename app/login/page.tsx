@@ -1,6 +1,7 @@
 import { GalleryVerticalEnd } from "lucide-react"
 
 import { LoginForm } from "@/components/login-form"
+import { ToastContainer } from "react-toastify"
 
 export default function LoginPage() {
   return (
@@ -14,6 +15,7 @@ export default function LoginPage() {
         </a>
         <LoginForm />
       </div>
+      <ToastContainer />
     </div>
   )
 }
