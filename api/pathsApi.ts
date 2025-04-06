@@ -1,5 +1,5 @@
 export namespace PathsApi {
-    const BASE_URL = process.env.API_URL ?? "http://localhost:8080"; // Aseguramos que no sea undefined
+    const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? ""; // Aseguramos que no sea undefined
 
     export const Endpoints = {
         login: "/v1/auth/login",
