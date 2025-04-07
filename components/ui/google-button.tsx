@@ -65,7 +65,7 @@ export const GoogleLoginButton = ({ text = "continue_with" }: GoogleLoginButtonP
       width: "100%",
       text: text
     })
-  }, [])
+  }, [text])
 
   return <div ref={googleDivRef} className="w-full flex justify-center" />
 }
