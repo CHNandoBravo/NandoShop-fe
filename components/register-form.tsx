@@ -13,12 +13,13 @@ import { Label } from "@/components/ui/label"
 
 //
 import {useFormik} from "formik"
-import { LoginInitialValue, loginSchema } from "../schemasYup/loginSchema"
 import { toast } from "react-toastify"
 import { login } from "@/api/auth/login"
 import { GoogleLoginButton } from "./ui/google-button"
+import { registerInitialValue, registerSchema } from "@/schemasYup/registerSchema"
+import { register } from "@/api/auth/register"
 
-export function LoginForm({
+export function RegisterForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) { 
@@ -44,41 +45,33 @@ export function LoginForm({
     formik.handleSubmit();
   }
   const formik = useFormik({
-    initialValues: LoginInitialValue,
+    initialValues: registerInitialValue,
     onSubmit: async (values) => {
       try {
-        await login(values);
+        await register(values);
         toast.success("Inicio de sesión exitoso.")
       } catch (error){
         toast.error("Ocurrió un error inesperado.");
         console.log(error)
       }
     },
-    validationSchema: loginSchema
+    validationSchema: registerSchema
   });
   
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Bienvenido de nuevo</CardTitle>
+          <CardTitle className="text-xl">Bienvenido a NandoShop!!!</CardTitle>
           <CardDescription>
-          Inicie sesión con su cuenta de Google
+            Únete usando Google
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit}>
             <div className="grid gap-6">
               <div className="flex flex-col gap-4">
-                {/* <Button variant="outline" className="w-full" type="button">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path
-                      d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"
-                      fill="currentColor"
-                    />
-                  </svg>
-                  Iniciar sesión con Apple
-                </Button> */}
+                
                 <GoogleLoginButton/>
               </div>
               <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
@@ -87,6 +80,34 @@ export function LoginForm({
                 </span>
               </div>
               <div className="grid gap-6">
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="grid gap-2">
+                        <Label htmlFor="first_name">Nombre</Label>
+                        <Input
+                            id="first_name"
+                            type="text"
+                            value={formik.values.first_name}
+                            onChange={formik.handleChange}
+                            placeholder="Nando"
+                        />
+                        {formik.touched.first_name && formik.errors.first_name && (
+                            <p className="text-red-500 text-sm">{formik.errors.first_name}</p>
+                        )}
+                    </div>
+                    <div className="grid gap-2">
+                        <Label htmlFor="last_name">Apellido</Label>
+                        <Input
+                            id="last_name"
+                            type="last_name"
+                            value={formik.values.last_name}
+                            onChange={formik.handleChange}
+                            placeholder="Bravo"
+                        />
+                        {formik.touched.last_name && formik.errors.last_name && (
+                            <p className="text-red-500 text-sm">{formik.errors.last_name}</p>
+                        )}
+                    </div>
+                </div>
                 <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
@@ -121,7 +142,7 @@ export function LoginForm({
                     )}
                 </div>
                 <Button type="submit" className="w-full">
-                  Iniciar Sesión
+                Registrarme
                 </Button>
               </div>
               {/* <div className="text-center text-sm">
