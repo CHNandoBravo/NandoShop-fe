@@ -29,6 +29,14 @@ export function LoginForm({
     // Si hay un error mandar un toast
     const errors = await formik.validateForm();
     if (Object.keys(errors).length > 0) {
+      // Forzar que todos los campos estén como "touched"
+      formik.setTouched(
+        Object.keys(errors).reduce((acc, key) => {
+          acc[key] = true;
+          return acc;
+        }, {} as Record<string, boolean>)
+      );
+
       toast.error("Por favor, completa todos los campos obligatorios.");
       return;
     }
@@ -94,15 +102,15 @@ export function LoginForm({
                   )}
                 </div>
                 <div className="grid gap-2">
-                  {/* <div className="flex items-center">
+                  <div className="flex items-center">
                     <Label htmlFor="password">Contraseña</Label>
-                    <a
+                    {/* <a
                       href="#"
                       className="ml-auto text-sm underline-offset-4 hover:underline"
                     >
                       Olvidaste tu contraseña?
-                    </a>
-                  </div> */}
+                    </a> */}
+                  </div>
                   <Input id="password" 
                     type="password" 
                     required 
