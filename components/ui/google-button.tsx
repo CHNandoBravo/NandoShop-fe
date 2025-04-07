@@ -26,7 +26,11 @@ declare global {
   }
 }
 
-export const GoogleLoginButton = () => {
+interface GoogleLoginButtonProps {
+  text?: "signin_with" | "signup_with" | "continue_with" | "signup" // valores válidos
+}
+
+export const GoogleLoginButton = ({ text = "continue_with" }: GoogleLoginButtonProps ) => {
   const googleDivRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -59,6 +63,7 @@ export const GoogleLoginButton = () => {
       theme: "outline",
       size: "large",
       width: "100%",
+      text: text
     })
   }, [])
 

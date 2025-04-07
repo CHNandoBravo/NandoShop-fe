@@ -14,6 +14,15 @@ const yupCommon = {
         .matches(/\d/, "Debe contener un número")
         .matches(/[@$!%*?&]/, "Debe contener un carácter especial (@$!%*?&)")
         .required("Contraseña requerida"),
+    first_name: () => Yup.string()
+            .max(255, "El nombre no debe superar los 255 caracteres.")
+            .matches(/^[A-Za-zÀ-ÿ\s'-]+$/, "El nombre contiene caracteres inválidos.")
+            .required("El nombre es requerido."),
+    
+    last_name: () => Yup.string()
+            .max(255, "El apellido no debe superar los 255 caracteres.")
+            .matches(/^[A-Za-zÀ-ÿ\s'-]+$/, "El apellido contiene caracteres inválidos.")
+            .required("El apellido es requerido."),
 }
 
 export default yupCommon;
