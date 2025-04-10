@@ -9,4 +9,10 @@ export namespace AuthInterfaces {
         first_name: string;
         last_name: string;
     }
+    export interface UserMeResponse {
+        email: string;
+        role: string;
+        lastName: string;
+        firstName: string;
+    }
 }

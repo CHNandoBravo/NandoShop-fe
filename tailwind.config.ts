@@ -82,12 +82,27 @@ export default {
   				to: {
   					height: '0'
   				}
-  			}
+  			},
+			slideRight: {
+				'0%': { transform: 'translateX(0px)' },
+				'100%': { transform: 'translateX(120px)' },
+			  },
+			  slideLeft: {
+				'0%': { transform: 'translateX(90px)' },
+				'100%': { transform: 'translateX(0)' },
+			  },
+		
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+			slideRight: 'slideRight 1s ease-in-out forwards',
+			slideLeft: 'slideLeft 0.5s ease-in-out forwards',
+  		},
+		  fontFamily: {
+			'afacad': ['var(--font-afacad-flux)'],
+			'afacad-fallback': ['"Afacad Flux Fallback"'],
+		},
   	}
   },
   plugins: [require("tailwindcss-animate")],

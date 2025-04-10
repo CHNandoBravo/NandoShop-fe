@@ -3,10 +3,16 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { PathsApi } from "../pathsApi";
 
-export async function login(data: AuthInterfaces.LoginInterface) {
-    const url = PathsApi.getFullPath(PathsApi.Endpoints.login);
-    console.log()
-    return axios.post(url, data)
+export async function userMe() {
+    const url = PathsApi.getFullPath(PathsApi.Endpoints.user_me);
+    const token = localStorage.getItem("jwt");
+    return axios.get(url,
+        {
+            headers: {
+                Authorization: "Bearer "+token
+            }
+        }
+    )
         .then(response => response)
         .catch(error => {
             if (error.response) {
