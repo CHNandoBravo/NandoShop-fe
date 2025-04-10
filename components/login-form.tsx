@@ -17,6 +17,7 @@ import { LoginInitialValue, loginSchema } from "../schemasYup/loginSchema"
 import { toast } from "react-toastify"
 import { login } from "@/api/auth/login"
 import { GoogleLoginButton } from "./ui/google-button"
+import { useRouter } from 'next/navigation';
 
 export function LoginForm({
   className,
@@ -43,12 +44,15 @@ export function LoginForm({
     // formik procesa el envio
     formik.handleSubmit();
   }
+  const router = useRouter();
+
   const formik = useFormik({
     initialValues: LoginInitialValue,
     onSubmit: async (values) => {
       try {
         await login(values);
-        toast.success("Inicio de sesión exitoso.")
+        toast.success("Inicio de sesión exitoso.");
+        router.push("/");
       } catch (error){
         toast.error("Ocurrió un error inesperado.");
         console.log(error)
