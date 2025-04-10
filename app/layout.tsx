@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, Playwrite_ES, Rowdies } from "next/font/google";
 import "./globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Script from "next/script";
-import localFont from 'next/font/local';
 import { Afacad_Flux } from "next/font/google";
 
 const geistSans = Geist({
@@ -33,6 +32,7 @@ const playwrite_ES = Playwrite_ES({
 const rowdies = Rowdies({
   variable: "--font-rowdies",
   display: 'swap',
+  subsets: ['latin'],
   weight:"400"
 });
 export default function RootLayout({

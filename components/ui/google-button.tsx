@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react"
 import { toast } from "react-toastify"
 import axios from "axios"
+import { useRouter } from "next/navigation"
 
 interface CredentialResponse {
   credential: string
@@ -32,6 +33,7 @@ interface GoogleLoginButtonProps {
 
 export const GoogleLoginButton = ({ text = "continue_with" }: GoogleLoginButtonProps ) => {
   const googleDivRef = useRef<HTMLDivElement>(null)
+  const router = useRouter();
 
   useEffect(() => {
     if (!window.google || !googleDivRef.current) return
@@ -48,7 +50,9 @@ export const GoogleLoginButton = ({ text = "continue_with" }: GoogleLoginButtonP
 
           if (res.data?.token) {
             localStorage.setItem("jwt", res.data.token)
+            
             toast.success("Inicio de sesión con Google exitoso.")
+            router.push("/");
           } else {
             toast.error("Error al recibir el token del backend.")
           }

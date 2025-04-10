@@ -17,6 +17,8 @@ import { toast } from "react-toastify"
 import { GoogleLoginButton } from "./ui/google-button"
 import { registerInitialValue, registerSchema } from "@/schemasYup/registerSchema"
 import { register } from "@/api/auth/register"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
 
 export function RegisterForm({
   className,
@@ -43,12 +45,31 @@ export function RegisterForm({
     // formik procesa el envio
     formik.handleSubmit();
   }
+
+  const router = useRouter();
+  const [redirectCountdown, setRedirectCountdown] = useState<number | null>(null);
+
   const formik = useFormik({
     initialValues: registerInitialValue,
     onSubmit: async (values) => {
       try {
         await register(values);
-        toast.success("Inicio de sesión exitoso.")
+        toast.success(`Registro exitoso. Serás redirigido al login en 5 segundos.`)
+        console.log(redirectCountdown)
+        let secondsLeft = 5;
+        setRedirectCountdown(secondsLeft);
+
+        const interval = setInterval(() => {
+          secondsLeft -= 1;
+          setRedirectCountdown(secondsLeft);
+
+          if (secondsLeft === 0) {
+            clearInterval(interval);
+            router.push("/login");
+          }
+        }, 1000);
+
+        
       } catch (error){
         toast.error("Ocurrió un error inesperado.");
         console.log(error)
