@@ -93,7 +93,7 @@ body {
   }
   
   .hero-layout {
-    @apply w-full min-h-screen flex flex-col md:flex-row gap-4;
+    @apply w-full flex flex-col-reverse md:flex-row gap-4;
   }
 
   .hero-main {
