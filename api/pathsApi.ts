@@ -7,6 +7,7 @@ export namespace PathsApi {
         login: "/v1/auth/login",
         register: "/v1/auth/register",
         user_me: "/v1/auth/me",
+        my_products: "/v1/my_products"
     };
 
     export const getFullPath = (path: string) => `${BASE_URL}${path}`;

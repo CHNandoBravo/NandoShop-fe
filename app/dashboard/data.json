@@ -1,614 +1,614 @@
 [
   {
     "id": 1,
-    "header": "Cover page",
-    "type": "Cover page",
-    "status": "In Process",
-    "target": "18",
-    "limit": "5",
-    "reviewer": "Eddie Lake"
+    "name": "Remera Azul",
+    "created_at": "Ropa",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "5",
+    "category_id": "Ropa"
   },
   {
     "id": 2,
-    "header": "Table of contents",
-    "type": "Table of contents",
-    "status": "Done",
-    "target": "29",
-    "limit": "24",
-    "reviewer": "Eddie Lake"
+    "name": "Table of contents",
+    "created_at": "Table of contents",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "24",
+    "category_id": "Ropa"
   },
   {
     "id": 3,
-    "header": "Executive summary",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "10",
-    "limit": "13",
-    "reviewer": "Eddie Lake"
+    "name": "Executive summary",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "13",
+    "category_id": "Ropa"
   },
   {
     "id": 4,
-    "header": "Technical approach",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "27",
-    "limit": "23",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Technical approach",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "23",
+    "category_id": "Ropa"
   },
   {
     "id": 5,
-    "header": "Design",
-    "type": "Narrative",
-    "status": "In Process",
-    "target": "2",
-    "limit": "16",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Design",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "16",
+    "category_id": "Ropa"
   },
   {
     "id": 6,
-    "header": "Capabilities",
-    "type": "Narrative",
-    "status": "In Process",
-    "target": "20",
-    "limit": "8",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Capabilities",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "8",
+    "category_id": "Ropa"
   },
   {
     "id": 7,
-    "header": "Integration with existing systems",
-    "type": "Narrative",
-    "status": "In Process",
-    "target": "19",
-    "limit": "21",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Integration with existing systems",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "21",
+    "category_id": "Ropa"
   },
   {
     "id": 8,
-    "header": "Innovation and Advantages",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "25",
-    "limit": "26",
-    "reviewer": "Assign reviewer"
+    "name": "Innovation and Advantages",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "26",
+    "category_id": "Ropa"
   },
   {
     "id": 9,
-    "header": "Overview of EMR's Innovative Solutions",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "7",
-    "limit": "23",
-    "reviewer": "Assign reviewer"
+    "name": "Overview of EMR's Innovative Solutions",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "23",
+    "category_id": "Ropa"
   },
   {
     "id": 10,
-    "header": "Advanced Algorithms and Machine Learning",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "30",
-    "limit": "28",
-    "reviewer": "Assign reviewer"
+    "name": "Advanced Algorithms and Machine Learning",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "28",
+    "category_id": "Ropa"
   },
   {
     "id": 11,
-    "header": "Adaptive Communication Protocols",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "9",
-    "limit": "31",
-    "reviewer": "Assign reviewer"
+    "name": "Adaptive Communication Protocols",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "31",
+    "category_id": "Ropa"
   },
   {
     "id": 12,
-    "header": "Advantages Over Current Technologies",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "12",
-    "limit": "0",
-    "reviewer": "Assign reviewer"
+    "name": "Advantages Over Current Technologies",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "0",
+    "category_id": "Ropa"
   },
   {
     "id": 13,
-    "header": "Past Performance",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "22",
-    "limit": "33",
-    "reviewer": "Assign reviewer"
+    "name": "Past Performance",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "33",
+    "category_id": "Ropa"
   },
   {
     "id": 14,
-    "header": "Customer Feedback and Satisfaction Levels",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "15",
-    "limit": "34",
-    "reviewer": "Assign reviewer"
+    "name": "Customer Feedback and Satisfaction Levels",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "34",
+    "category_id": "Ropa"
   },
   {
     "id": 15,
-    "header": "Implementation Challenges and Solutions",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "3",
-    "limit": "35",
-    "reviewer": "Assign reviewer"
+    "name": "Implementation Challenges and Solutions",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "35",
+    "category_id": "Ropa"
   },
   {
     "id": 16,
-    "header": "Security Measures and Data Protection Policies",
-    "type": "Narrative",
-    "status": "In Process",
-    "target": "6",
-    "limit": "36",
-    "reviewer": "Assign reviewer"
+    "name": "Security Measures and Data Protection Policies",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "36",
+    "category_id": "Ropa"
   },
   {
     "id": 17,
-    "header": "Scalability and Future Proofing",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "4",
-    "limit": "37",
-    "reviewer": "Assign reviewer"
+    "name": "Scalability and Future Proofing",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "37",
+    "category_id": "Ropa"
   },
   {
     "id": 18,
-    "header": "Cost-Benefit Analysis",
-    "type": "Plain language",
-    "status": "Done",
-    "target": "14",
-    "limit": "38",
-    "reviewer": "Assign reviewer"
+    "name": "Cost-Benefit Analysis",
+    "created_at": "Plain language",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "38",
+    "category_id": "Ropa"
   },
   {
     "id": 19,
-    "header": "User Training and Onboarding Experience",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "17",
-    "limit": "39",
-    "reviewer": "Assign reviewer"
+    "name": "User Training and Onboarding Experience",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "39",
+    "category_id": "Ropa"
   },
   {
     "id": 20,
-    "header": "Future Development Roadmap",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "11",
-    "limit": "40",
-    "reviewer": "Assign reviewer"
+    "name": "Future Development Roadmap",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "40",
+    "category_id": "Ropa"
   },
   {
     "id": 21,
-    "header": "System Architecture Overview",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "24",
-    "limit": "18",
-    "reviewer": "Maya Johnson"
+    "name": "System Architecture Overview",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "18",
+    "category_id": "Maya Johnson"
   },
   {
     "id": 22,
-    "header": "Risk Management Plan",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "15",
-    "limit": "22",
-    "reviewer": "Carlos Rodriguez"
+    "name": "Risk Management Plan",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "22",
+    "category_id": "Carlos Rodriguez"
   },
   {
     "id": 23,
-    "header": "Compliance Documentation",
-    "type": "Legal",
-    "status": "In Process",
-    "target": "31",
-    "limit": "27",
-    "reviewer": "Sarah Chen"
+    "name": "Compliance Documentation",
+    "created_at": "Legal",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "27",
+    "category_id": "Sarah Chen"
   },
   {
     "id": 24,
-    "header": "API Documentation",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "8",
-    "limit": "12",
-    "reviewer": "Raj Patel"
+    "name": "API Documentation",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "12",
+    "category_id": "Raj Patel"
   },
   {
     "id": 25,
-    "header": "User Interface Mockups",
-    "type": "Visual",
-    "status": "In Process",
-    "target": "19",
-    "limit": "25",
-    "reviewer": "Leila Ahmadi"
+    "name": "User Interface Mockups",
+    "created_at": "Visual",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "25",
+    "category_id": "Leila Ahmadi"
   },
   {
     "id": 26,
-    "header": "Database Schema",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "22",
-    "limit": "20",
-    "reviewer": "Thomas Wilson"
+    "name": "Database Schema",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "20",
+    "category_id": "Thomas Wilson"
   },
   {
     "id": 27,
-    "header": "Testing Methodology",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "17",
-    "limit": "14",
-    "reviewer": "Assign reviewer"
+    "name": "Testing Methodology",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "14",
+    "category_id": "Ropa"
   },
   {
     "id": 28,
-    "header": "Deployment Strategy",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "26",
-    "limit": "30",
-    "reviewer": "Eddie Lake"
+    "name": "Deployment Strategy",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "30",
+    "category_id": "Ropa"
   },
   {
     "id": 29,
-    "header": "Budget Breakdown",
-    "type": "Financial",
-    "status": "In Process",
-    "target": "13",
-    "limit": "16",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Budget Breakdown",
+    "created_at": "Financial",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "16",
+    "category_id": "Ropa"
   },
   {
     "id": 30,
-    "header": "Market Analysis",
-    "type": "Research",
-    "status": "Done",
-    "target": "29",
-    "limit": "32",
-    "reviewer": "Sophia Martinez"
+    "name": "Market Analysis",
+    "created_at": "Research",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "32",
+    "category_id": "Sophia Martinez"
   },
   {
     "id": 31,
-    "header": "Competitor Comparison",
-    "type": "Research",
-    "status": "In Process",
-    "target": "21",
-    "limit": "19",
-    "reviewer": "Assign reviewer"
+    "name": "Competitor Comparison",
+    "created_at": "Research",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "19",
+    "category_id": "Ropa"
   },
   {
     "id": 32,
-    "header": "Maintenance Plan",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "16",
-    "limit": "23",
-    "reviewer": "Alex Thompson"
+    "name": "Maintenance Plan",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "23",
+    "category_id": "Alex Thompson"
   },
   {
     "id": 33,
-    "header": "User Personas",
-    "type": "Research",
-    "status": "In Process",
-    "target": "27",
-    "limit": "24",
-    "reviewer": "Nina Patel"
+    "name": "User Personas",
+    "created_at": "Research",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "24",
+    "category_id": "Nina Patel"
   },
   {
     "id": 34,
-    "header": "Accessibility Compliance",
-    "type": "Legal",
-    "status": "Done",
-    "target": "18",
-    "limit": "21",
-    "reviewer": "Assign reviewer"
+    "name": "Accessibility Compliance",
+    "created_at": "Legal",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "21",
+    "category_id": "Ropa"
   },
   {
     "id": 35,
-    "header": "Performance Metrics",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "23",
-    "limit": "26",
-    "reviewer": "David Kim"
+    "name": "Performance Metrics",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "26",
+    "category_id": "David Kim"
   },
   {
     "id": 36,
-    "header": "Disaster Recovery Plan",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "14",
-    "limit": "17",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Disaster Recovery Plan",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "17",
+    "category_id": "Ropa"
   },
   {
     "id": 37,
-    "header": "Third-party Integrations",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "25",
-    "limit": "28",
-    "reviewer": "Eddie Lake"
+    "name": "Third-party Integrations",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "28",
+    "category_id": "Ropa"
   },
   {
     "id": 38,
-    "header": "User Feedback Summary",
-    "type": "Research",
-    "status": "Done",
-    "target": "20",
-    "limit": "15",
-    "reviewer": "Assign reviewer"
+    "name": "User Feedback Summary",
+    "created_at": "Research",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "15",
+    "category_id": "Ropa"
   },
   {
     "id": 39,
-    "header": "Localization Strategy",
-    "type": "Narrative",
-    "status": "In Process",
-    "target": "12",
-    "limit": "19",
-    "reviewer": "Maria Garcia"
+    "name": "Localization Strategy",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "19",
+    "category_id": "Maria Garcia"
   },
   {
     "id": 40,
-    "header": "Mobile Compatibility",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "28",
-    "limit": "31",
-    "reviewer": "James Wilson"
+    "name": "Mobile Compatibility",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "31",
+    "category_id": "James Wilson"
   },
   {
     "id": 41,
-    "header": "Data Migration Plan",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "19",
-    "limit": "22",
-    "reviewer": "Assign reviewer"
+    "name": "Data Migration Plan",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "22",
+    "category_id": "Ropa"
   },
   {
     "id": 42,
-    "header": "Quality Assurance Protocols",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "30",
-    "limit": "33",
-    "reviewer": "Priya Singh"
+    "name": "Quality Assurance Protocols",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "33",
+    "category_id": "Priya Singh"
   },
   {
     "id": 43,
-    "header": "Stakeholder Analysis",
-    "type": "Research",
-    "status": "In Process",
-    "target": "11",
-    "limit": "14",
-    "reviewer": "Eddie Lake"
+    "name": "Stakeholder Analysis",
+    "created_at": "Research",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "14",
+    "category_id": "Ropa"
   },
   {
     "id": 44,
-    "header": "Environmental Impact Assessment",
-    "type": "Research",
-    "status": "Done",
-    "target": "24",
-    "limit": "27",
-    "reviewer": "Assign reviewer"
+    "name": "Environmental Impact Assessment",
+    "created_at": "Research",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "27",
+    "category_id": "Ropa"
   },
   {
     "id": 45,
-    "header": "Intellectual Property Rights",
-    "type": "Legal",
-    "status": "In Process",
-    "target": "17",
-    "limit": "20",
-    "reviewer": "Sarah Johnson"
+    "name": "Intellectual Property Rights",
+    "created_at": "Legal",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "20",
+    "category_id": "Sarah Johnson"
   },
   {
     "id": 46,
-    "header": "Customer Support Framework",
-    "type": "Narrative",
-    "status": "Done",
-    "target": "22",
-    "limit": "25",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Customer Support Framework",
+    "created_at": "Narrative",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "25",
+    "category_id": "Ropa"
   },
   {
     "id": 47,
-    "header": "Version Control Strategy",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "15",
-    "limit": "18",
-    "reviewer": "Assign reviewer"
+    "name": "Version Control Strategy",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "18",
+    "category_id": "Ropa"
   },
   {
     "id": 48,
-    "header": "Continuous Integration Pipeline",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "26",
-    "limit": "29",
-    "reviewer": "Michael Chen"
+    "name": "Continuous Integration Pipeline",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "29",
+    "category_id": "Michael Chen"
   },
   {
     "id": 49,
-    "header": "Regulatory Compliance",
-    "type": "Legal",
-    "status": "In Process",
-    "target": "13",
-    "limit": "16",
-    "reviewer": "Assign reviewer"
+    "name": "Regulatory Compliance",
+    "created_at": "Legal",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "16",
+    "category_id": "Ropa"
   },
   {
     "id": 50,
-    "header": "User Authentication System",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "28",
-    "limit": "31",
-    "reviewer": "Eddie Lake"
+    "name": "User Authentication System",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "31",
+    "category_id": "Ropa"
   },
   {
     "id": 51,
-    "header": "Data Analytics Framework",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "21",
-    "limit": "24",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Data Analytics Framework",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "24",
+    "category_id": "Ropa"
   },
   {
     "id": 52,
-    "header": "Cloud Infrastructure",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "16",
-    "limit": "19",
-    "reviewer": "Assign reviewer"
+    "name": "Cloud Infrastructure",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "19",
+    "category_id": "Ropa"
   },
   {
     "id": 53,
-    "header": "Network Security Measures",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "29",
-    "limit": "32",
-    "reviewer": "Lisa Wong"
+    "name": "Network Security Measures",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "32",
+    "category_id": "Lisa Wong"
   },
   {
     "id": 54,
-    "header": "Project Timeline",
-    "type": "Planning",
-    "status": "Done",
-    "target": "14",
-    "limit": "17",
-    "reviewer": "Eddie Lake"
+    "name": "Project Timeline",
+    "created_at": "Planning",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "17",
+    "category_id": "Ropa"
   },
   {
     "id": 55,
-    "header": "Resource Allocation",
-    "type": "Planning",
-    "status": "In Process",
-    "target": "27",
-    "limit": "30",
-    "reviewer": "Assign reviewer"
+    "name": "Resource Allocation",
+    "created_at": "Planning",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "30",
+    "category_id": "Ropa"
   },
   {
     "id": 56,
-    "header": "Team Structure and Roles",
-    "type": "Planning",
-    "status": "Done",
-    "target": "20",
-    "limit": "23",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Team Structure and Roles",
+    "created_at": "Planning",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "23",
+    "category_id": "Ropa"
   },
   {
     "id": 57,
-    "header": "Communication Protocols",
-    "type": "Planning",
-    "status": "In Process",
-    "target": "15",
-    "limit": "18",
-    "reviewer": "Assign reviewer"
+    "name": "Communication Protocols",
+    "created_at": "Planning",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "18",
+    "category_id": "Ropa"
   },
   {
     "id": 58,
-    "header": "Success Metrics",
-    "type": "Planning",
-    "status": "Done",
-    "target": "30",
-    "limit": "33",
-    "reviewer": "Eddie Lake"
+    "name": "Success Metrics",
+    "created_at": "Planning",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "33",
+    "category_id": "Ropa"
   },
   {
     "id": 59,
-    "header": "Internationalization Support",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "23",
-    "limit": "26",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Internationalization Support",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "26",
+    "category_id": "Ropa"
   },
   {
     "id": 60,
-    "header": "Backup and Recovery Procedures",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "18",
-    "limit": "21",
-    "reviewer": "Assign reviewer"
+    "name": "Backup and Recovery Procedures",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "21",
+    "category_id": "Ropa"
   },
   {
     "id": 61,
-    "header": "Monitoring and Alerting System",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "25",
-    "limit": "28",
-    "reviewer": "Daniel Park"
+    "name": "Monitoring and Alerting System",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "28",
+    "category_id": "Daniel Park"
   },
   {
     "id": 62,
-    "header": "Code Review Guidelines",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "12",
-    "limit": "15",
-    "reviewer": "Eddie Lake"
+    "name": "Code Review Guidelines",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "15",
+    "category_id": "Ropa"
   },
   {
     "id": 63,
-    "header": "Documentation Standards",
-    "type": "Technical content",
-    "status": "In Process",
-    "target": "27",
-    "limit": "30",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Documentation Standards",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "30",
+    "category_id": "Ropa"
   },
   {
     "id": 64,
-    "header": "Release Management Process",
-    "type": "Planning",
-    "status": "Done",
-    "target": "22",
-    "limit": "25",
-    "reviewer": "Assign reviewer"
+    "name": "Release Management Process",
+    "created_at": "Planning",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "25",
+    "category_id": "Ropa"
   },
   {
     "id": 65,
-    "header": "Feature Prioritization Matrix",
-    "type": "Planning",
-    "status": "In Process",
-    "target": "19",
-    "limit": "22",
-    "reviewer": "Emma Davis"
+    "name": "Feature Prioritization Matrix",
+    "created_at": "Planning",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "22",
+    "category_id": "Emma Davis"
   },
   {
     "id": 66,
-    "header": "Technical Debt Assessment",
-    "type": "Technical content",
-    "status": "Done",
-    "target": "24",
-    "limit": "27",
-    "reviewer": "Eddie Lake"
+    "name": "Technical Debt Assessment",
+    "created_at": "Technical content",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "27",
+    "category_id": "Ropa"
   },
   {
     "id": 67,
-    "header": "Capacity Planning",
-    "type": "Planning",
-    "status": "In Process",
-    "target": "21",
-    "limit": "24",
-    "reviewer": "Jamik Tashpulatov"
+    "name": "Capacity Planning",
+    "created_at": "Planning",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "24",
+    "category_id": "Ropa"
   },
   {
     "id": 68,
-    "header": "Service Level Agreements",
-    "type": "Legal",
-    "status": "Done",
-    "target": "26",
-    "limit": "29",
-    "reviewer": "Assign reviewer"
+    "name": "Service Level Agreements",
+    "created_at": "Legal",
+    "price": 9999.99,
+    "stock": 10,
+    "updated_at": "29",
+    "category_id": "Ropa"
   }
 ]

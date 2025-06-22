@@ -1,10 +1,33 @@
+"use client"
 import { AppSidebar } from "@/components/app-sidebar"
+import { DataTable } from "@/components/data-table"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 
-// import data from "./data.json"
+import data from "./data.json"
+import { useEffect, useState } from "react"
+import { ProductsInterfaces } from "@/interfaces/products"
+import { myProducts } from "@/api/auth/products"
 
 export default function Page() {
+  const [productsData, setProductsData] = useState<ProductsInterfaces.myProducts[]>([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchUser = async () => {
+    try {
+        const res = await myProducts(); // ⚠️ Cambiá esta URL según tu backend
+        setProductsData(res.data);
+        
+    } catch (error) {
+        console.error("Fallo en fetch:", error);
+    } finally {
+      setLoading(false);
+    }
+    };
+
+    fetchUser();
+  }, []);
+
   return (
     <SidebarProvider>
       <AppSidebar variant="inset" />
@@ -17,7 +40,11 @@ export default function Page() {
               <div className="px-4 lg:px-6">
                 <ChartAreaInteractive />
               </div> */}
-              {/* <DataTable data={data} /> */}
+              {loading ? (
+                <div className="text-center py-8">Cargando productos...</div>
+              ) : (
+                <DataTable data={productsData} />
+              )}
             </div>
           </div>
         </div>

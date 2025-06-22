@@ -17,6 +17,7 @@ import {
   SearchIcon,
   SettingsIcon,
   UsersIcon,
+  PackageSearch
 } from "lucide-react"
 
 import { NavDocuments } from "@/components/nav-documents"
@@ -46,9 +47,9 @@ const data = {
       icon: LayoutDashboardIcon,
     },
     {
-      title: "Lifecycle",
+      title: "Productos",
       url: "#",
-      icon: ListIcon,
+      icon: PackageSearch,
     },
     {
       title: "Analytics",
