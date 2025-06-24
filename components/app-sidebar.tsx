@@ -48,107 +48,93 @@ const data = {
     },
     {
       title: "Productos",
-      url: "#",
+      url: "/admin/products",
       icon: PackageSearch,
     },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: BarChartIcon,
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: FolderIcon,
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: UsersIcon,
-    },
+    
   ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: CameraIcon,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: FileTextIcon,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: FileCodeIcon,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Settings",
-      url: "#",
-      icon: SettingsIcon,
-    },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: HelpCircleIcon,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: SearchIcon,
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: DatabaseIcon,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: ClipboardListIcon,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: FileIcon,
-    },
-  ],
+  // navClouds: [
+  //   {
+  //     title: "Capture",
+  //     icon: CameraIcon,
+  //     isActive: true,
+  //     url: "#",
+  //     items: [
+  //       {
+  //         title: "Active Proposals",
+  //         url: "#",
+  //       },
+  //       {
+  //         title: "Archived",
+  //         url: "#",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     title: "Proposal",
+  //     icon: FileTextIcon,
+  //     url: "#",
+  //     items: [
+  //       {
+  //         title: "Active Proposals",
+  //         url: "#",
+  //       },
+  //       {
+  //         title: "Archived",
+  //         url: "#",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     title: "Prompts",
+  //     icon: FileCodeIcon,
+  //     url: "#",
+  //     items: [
+  //       {
+  //         title: "Active Proposals",
+  //         url: "#",
+  //       },
+  //       {
+  //         title: "Archived",
+  //         url: "#",
+  //       },
+  //     ],
+  //   },
+  // ],
+  // navSecondary: [
+  //   {
+  //     title: "Settings",
+  //     url: "#",
+  //     icon: SettingsIcon,
+  //   },
+  //   {
+  //     title: "Get Help",
+  //     url: "#",
+  //     icon: HelpCircleIcon,
+  //   },
+  //   {
+  //     title: "Search",
+  //     url: "#",
+  //     icon: SearchIcon,
+  //   },
+  // ],
+  // documents: [
+  //   {
+  //     name: "Data Library",
+  //     url: "#",
+  //     icon: DatabaseIcon,
+  //   },
+  //   {
+  //     name: "Reports",
+  //     url: "#",
+  //     icon: ClipboardListIcon,
+  //   },
+  //   {
+  //     name: "Word Assistant",
+  //     url: "#",
+  //     icon: FileIcon,
+  //   },
+  // ],
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -161,7 +147,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="#">
+              <a href="/">
                 <ArrowUpCircleIcon className="h-5 w-5" />
                 <span className="text-base font-semibold">NandoShop Inc.</span>
               </a>
@@ -172,12 +158,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        {/* <NavDocuments items={data.documents} />
+        <NavSecondary items={data.navSecondary} className="mt-auto" /> */}
       </SidebarContent>
-      <SidebarFooter>
+      {/* <SidebarFooter>
         <NavUser user={data.user} />
-      </SidebarFooter>
+      </SidebarFooter> */}
     </Sidebar>
   )
 }

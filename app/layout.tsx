@@ -4,6 +4,7 @@ import "./globals.css";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import Script from "next/script";
 import { Afacad_Flux } from "next/font/google";
+import { Bounce, ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,7 +47,19 @@ export default function RootLayout({
         className={`${rowdies.variable} ${playwrite_ES.variable} ${geistSans.variable} ${geistMono.variable} ${afacad_Flux.variable} antialiased`}
       >
         <GoogleOAuthProvider clientId="1072765750170-3epf8sq91g6j4ihl8gm36lekkkke2iat.apps.googleusercontent.com">
-
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+          />
         {children}
         </GoogleOAuthProvider>
         <Script
