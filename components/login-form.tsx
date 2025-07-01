@@ -50,7 +50,8 @@ export function LoginForm({
     initialValues: LoginInitialValue,
     onSubmit: async (values) => {
       try {
-        await login(values);
+        const response = await login(values);
+        localStorage.setItem("jwt", response.data.token)
         toast.success("Inicio de sesión exitoso.");
         router.push("/");
       } catch (error){

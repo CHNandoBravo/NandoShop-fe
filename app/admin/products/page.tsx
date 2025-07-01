@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ProductsInterfaces } from "@/interfaces/products";
 import { createProduct, myProducts } from "@/api/auth/products";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DataTable } from "@/components/data-table";
+import { DataTableProducts } from "@/components/data-table-products";
 
 export default function CreateProductPage() {
     const [loading, setLoading] = useState(false);
@@ -55,7 +55,7 @@ export default function CreateProductPage() {
         {loading ? (
             <div className="text-center py-8">Cargando productos...</div>
             ) : (
-            <DataTable data={productsData} />
+            <DataTableProducts data={productsData} />
             )}
       </div>
     </div>
