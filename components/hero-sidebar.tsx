@@ -18,11 +18,13 @@ export default function HeroSidebar () {
 
 
     useEffect(() => {
+      const token = localStorage.getItem("jwt");
         const fetchUser = async () => {
         try {
-            const res = await userMe(); // ⚠️ Cambiá esta URL según tu backend
-            setUserData(res.data);
-            
+            if (token) {
+              const res = await userMe(); // ⚠️ Cambiá esta URL según tu backend
+              setUserData(res.data);
+            }
         } catch (error) {
             console.error("Fallo en fetch:", error);
         }

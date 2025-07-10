@@ -72,6 +72,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuSeparator } from "./ui/d
 import { DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { Tooltip } from "@radix-ui/react-tooltip"
 import { TooltipContent, TooltipTrigger } from "./ui/tooltip"
+import { deleteProduct } from "@/api/auth/products"
 
 export const schema = z.object({
   id: z.number(),
@@ -84,63 +85,61 @@ export const schema = z.object({
 
 
 
-const columns: ColumnDef<z.infer<typeof schema>>[] = [
-  {
-    accessorKey: "name",
-    header: "Nombre",
-    enableHiding: false,
-  },
-  {
-    accessorKey: "type",
-    header: "Categoría",
-    cell: ({ row }) => (
-      <div className="w-32">
-        <Badge variant="outline" className="px-1.5 text-muted-foreground">
-          {row.original.category}
-        </Badge>
-      </div>
-    ),
-  },
-  {
-    accessorKey: "type",
-    header: "Precio",
-    cell: ({ row }) => (
-      <div className="w-32">
-        {/* <Badge variant="outline" className="px-1.5 text-muted-foreground"> */}
-          ${row.original.price}
-        {/* </Badge> */}
-      </div>
-    ),
-  },
-  {
-    accessorKey: "type",
-    header: "Stock",
-    cell: ({ row }) => (
-      <div className="w-32">
-        {row.original.stock}
-      </div>
-    ),
-  },
-  {
-    id: "delete",
-    cell: ({row}) => (
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Badge onClick={() => handleDelete(row.original.id)} variant="outline" className="px-1.5 text-muted-foreground cursor-pointer">
-            <Trash width={15}/>
+export function getColumns(handleDelete: (id: number) => void): ColumnDef<z.infer<typeof schema>>[] {
+  return [
+    {
+      accessorKey: "name",
+      header: "Nombre",
+      enableHiding: false,
+    },
+    {
+      accessorKey: "type",
+      header: "Categoría",
+      cell: ({ row }) => (
+        <div className="w-32">
+          <Badge variant="outline" className="px-1.5 text-muted-foreground">
+            {row.original.category}
           </Badge>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>Eliminar</p>
-        </TooltipContent>
-      </Tooltip>
-      
-    ),},
-]
-
-const handleDelete = async (id:number) => {
-  
-}
+        </div>
+      ),
+    },
+    {
+      accessorKey: "type",
+      header: "Precio",
+      cell: ({ row }) => (
+        <div className="w-32">
+          {/* <Badge variant="outline" className="px-1.5 text-muted-foreground"> */}
+            ${row.original.price}
+          {/* </Badge> */}
+        </div>
+      ),
+    },
+    {
+      accessorKey: "type",
+      header: "Stock",
+      cell: ({ row }) => (
+        <div className="w-32">
+          {row.original.stock}
+        </div>
+      ),
+    },
+    {
+      id: "delete",
+      cell: ({row}) => (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Badge onClick={() => handleDelete(row.original.id)} variant="outline" className="px-1.5 text-muted-foreground cursor-pointer">
+              <Trash width={15}/>
+            </Badge>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Eliminar</p>
+          </TooltipContent>
+        </Tooltip>
+        
+      ),},
+  ]
+};
 
 function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
   const { transform, transition, setNodeRef, isDragging } = useSortable({
@@ -195,6 +194,16 @@ export function DataTableProducts({
     [data]
   )
 
+  const handleDelete = async (id: number) => {
+    try {
+      const res = await deleteProduct(id);
+      setData((prev) => prev.filter((p) => p.id !== id)); // 🔥 ACTUALIZA EL DOM
+      console.log("Producto eliminado:", res);
+    } catch (err) {
+      console.error("Error al eliminar producto:", err);
+    }
+  };
+  const columns = getColumns(handleDelete);
   const table = useReactTable({
     data,
     columns,
