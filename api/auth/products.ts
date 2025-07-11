@@ -96,3 +96,39 @@ export async function deleteProduct(id: Number) {
             throw error;
     });
 }
+
+export async function updateStockProduct(
+    id: number,
+    request: ProductsInterfaces.updateStockProduct
+) {
+    const url = PathsApi.getFullPath(PathsApi.Endpoints.updateStockProduct + "/" + id);
+    const config = { headers: getAuthHeaders() };
+
+    try {
+        const response = await axios.put(url, request, config);
+        toast.success("Producto actualizado con éxito.");
+        return response;
+    } catch (error) {
+        handleAxiosError(error);
+    }
+}
+
+function getAuthHeaders() {
+    const token = localStorage.getItem("jwt");
+    return {
+        Authorization: token ? `Bearer ${token}` : ""
+    };
+}
+function handleAxiosError(error: any) {
+    if (error.response) {
+        switch (error.response.status) {
+            default:
+                toast.error(error.response.data.message || "Ha ocurrido un error inesperado.");
+        }
+    } else if (error.request) {
+        toast.error("No se recibió respuesta del servidor. Verifica tu conexión.");
+    } else {
+        toast.error(`Error: ${error.message || "Error desconocido"}`);
+    }
+    throw error;
+}

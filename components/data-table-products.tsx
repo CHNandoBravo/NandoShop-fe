@@ -72,7 +72,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuSeparator } from "./ui/d
 import { DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { Tooltip } from "@radix-ui/react-tooltip"
 import { TooltipContent, TooltipTrigger } from "./ui/tooltip"
-import { deleteProduct } from "@/api/auth/products"
+import { deleteProduct, updateStockProduct } from "@/api/auth/products"
+import { EditableStockCell } from "./datatables/cells/EditableStockCell"
 
 export const schema = z.object({
   id: z.number(),
@@ -85,7 +86,17 @@ export const schema = z.object({
 
 
 
-export function getColumns(handleDelete: (id: number) => void): ColumnDef<z.infer<typeof schema>>[] {
+export function getColumns({
+  handleDelete,
+  editingStockId,
+  setEditingStockId,
+  handleUpdateStock,
+}: {
+  handleDelete: (id: number) => void
+  editingStockId: number | null
+  setEditingStockId: (id: number | null) => void
+  handleUpdateStock: (id: number, newStock: number) => void
+}): ColumnDef<z.infer<typeof schema>>[] {
   return [
     {
       accessorKey: "name",
@@ -115,12 +126,16 @@ export function getColumns(handleDelete: (id: number) => void): ColumnDef<z.infe
       ),
     },
     {
-      accessorKey: "type",
+      accessorKey: "stock",
       header: "Stock",
       cell: ({ row }) => (
-        <div className="w-32">
-          {row.original.stock}
-        </div>
+        <EditableStockCell
+          rowId={row.original.id}
+          stock={row.original.stock}
+          isEditing={editingStockId === row.original.id}
+          setEditingStockId={setEditingStockId}
+          onUpdateStock={handleUpdateStock}
+        />
       ),
     },
     {
@@ -194,6 +209,20 @@ export function DataTableProducts({
     [data]
   )
 
+  const [editingStockId, setEditingStockId] = React.useState<number | null>(null)
+
+  const handleUpdateStock = (id: number, newStock: number) => {
+    setData(prev =>
+      prev.map(product =>
+        product.id === id ? { ...product, stock: newStock } : product
+      )
+    )
+
+    updateStockProduct(id, {newStock});
+    
+  }
+
+
   const handleDelete = async (id: number) => {
     try {
       const res = await deleteProduct(id);
@@ -203,7 +232,13 @@ export function DataTableProducts({
       console.error("Error al eliminar producto:", err);
     }
   };
-  const columns = getColumns(handleDelete);
+  const columns = getColumns({
+    handleDelete,
+    editingStockId,
+    setEditingStockId,
+    handleUpdateStock,
+  });
+
   const table = useReactTable({
     data,
     columns,
