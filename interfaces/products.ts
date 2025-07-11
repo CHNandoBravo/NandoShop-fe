@@ -14,4 +14,8 @@ export namespace ProductsInterfaces {
     export interface createProduct extends BaseProduct {
         categoryId: number;
     }
+
+    export interface updateStockProduct {
+        newStock: number
+    }
 }
