@@ -113,6 +113,38 @@ export async function updateStockProduct(
     }
 }
 
+export async function updatePriceProduct(
+    id: number,
+    request: ProductsInterfaces.updatePriceProduct
+) {
+    const url = PathsApi.getFullPath(PathsApi.Endpoints.updatePriceProduct + "/" + id);
+    const config = { headers: getAuthHeaders() };
+
+    try {
+        const response = await axios.put(url, request, config);
+        toast.success("Producto actualizado con éxito.");
+        return response;
+    } catch (error) {
+        handleAxiosError(error);
+    }
+}
+
+export async function updateNameProduct(
+    id: number,
+    request: ProductsInterfaces.updateNameProduct
+) {
+    const url = PathsApi.getFullPath(PathsApi.Endpoints.updateNameProduct + "/" + id);
+    const config = { headers: getAuthHeaders() };
+
+    try {
+        const response = await axios.put(url, request, config);
+        toast.success("Producto actualizado con éxito.");
+        return response;
+    } catch (error) {
+        handleAxiosError(error);
+    }
+}
+
 function getAuthHeaders() {
     const token = localStorage.getItem("jwt");
     return {
