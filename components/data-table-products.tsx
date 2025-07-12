@@ -72,8 +72,9 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuSeparator } from "./ui/d
 import { DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { Tooltip } from "@radix-ui/react-tooltip"
 import { TooltipContent, TooltipTrigger } from "./ui/tooltip"
-import { deleteProduct, updateStockProduct } from "@/api/auth/products"
-import { EditableStockCell } from "./datatables/cells/EditableStockCell"
+import { deleteProduct, updateNameProduct, updatePriceProduct, updateStockProduct } from "@/api/auth/products"
+import { EditableNumberCell } from "./datatables/cells/EditableStockCell"
+import { EditableStringCell } from "./datatables/cells/EditableStringCell"
 
 export const schema = z.object({
   id: z.number(),
@@ -91,17 +92,39 @@ export function getColumns({
   editingStockId,
   setEditingStockId,
   handleUpdateStock,
+  editingPriceId,
+  setEditingPriceId,
+  handleUpdatePrice,
+  editingNameId,
+  setEditingNameId,
+  handleUpdateName
 }: {
   handleDelete: (id: number) => void
   editingStockId: number | null
   setEditingStockId: (id: number | null) => void
   handleUpdateStock: (id: number, newStock: number) => void
+  editingPriceId: number | null
+  setEditingPriceId: (id: number | null) => void
+  handleUpdatePrice: (id: number, newPrice: number) => void,
+  editingNameId: number | null
+  setEditingNameId: (id: number | null) => void
+  handleUpdateName: (id: number, newName: string) => void
 }): ColumnDef<z.infer<typeof schema>>[] {
   return [
     {
       accessorKey: "name",
       header: "Nombre",
-      enableHiding: false,
+      cell: ({ row }) => (
+        <>
+         <EditableStringCell
+            rowId={row.original.id}
+            value={row.original.name}
+            isEditing={editingNameId === row.original.id}
+            setEditingItemId={setEditingNameId}
+            onUpdateValue={handleUpdateName}
+            />
+        </>
+      ),
     },
     {
       accessorKey: "type",
@@ -115,26 +138,28 @@ export function getColumns({
       ),
     },
     {
-      accessorKey: "type",
+      accessorKey: "price",
       header: "Precio",
       cell: ({ row }) => (
-        <div className="w-32">
-          {/* <Badge variant="outline" className="px-1.5 text-muted-foreground"> */}
-            ${row.original.price}
-          {/* </Badge> */}
-        </div>
+        <EditableNumberCell
+          rowId={row.original.id}
+          stock={row.original.price}
+          isEditing={editingPriceId === row.original.id}
+          setEditingItemId={setEditingPriceId}
+          onUpdateNumber={handleUpdatePrice}
+        />
       ),
     },
     {
       accessorKey: "stock",
       header: "Stock",
       cell: ({ row }) => (
-        <EditableStockCell
+        <EditableNumberCell
           rowId={row.original.id}
           stock={row.original.stock}
           isEditing={editingStockId === row.original.id}
-          setEditingStockId={setEditingStockId}
-          onUpdateStock={handleUpdateStock}
+          setEditingItemId={setEditingStockId}
+          onUpdateNumber={handleUpdateStock}
         />
       ),
     },
@@ -210,18 +235,34 @@ export function DataTableProducts({
   )
 
   const [editingStockId, setEditingStockId] = React.useState<number | null>(null)
-
+  const [editingPriceId, setEditingPriceId] = React.useState<number | null>(null)
+  const [editingNameId, setEditingNameId] = React.useState<number | null>(null)
   const handleUpdateStock = (id: number, newStock: number) => {
     setData(prev =>
       prev.map(product =>
         product.id === id ? { ...product, stock: newStock } : product
       )
     )
-
     updateStockProduct(id, {newStock});
-    
   }
 
+  const handleUpdatePrice = (id: number, newPrice: number) => {
+    setData(prev =>
+      prev.map(product =>
+        product.id === id ? { ...product, price: newPrice } : product
+      )
+    )
+    updatePriceProduct(id, {newPrice});
+  }
+
+  const handleUpdateName = (id: number, newName: string) => {
+    setData(prev =>
+      prev.map(product =>
+        product.id === id ? { ...product, name: newName } : product
+      )
+    )
+    updateNameProduct(id, {newName});
+  }
 
   const handleDelete = async (id: number) => {
     try {
@@ -237,6 +278,12 @@ export function DataTableProducts({
     editingStockId,
     setEditingStockId,
     handleUpdateStock,
+    editingPriceId,
+    setEditingPriceId,
+    handleUpdatePrice,
+    editingNameId,
+    setEditingNameId,
+    handleUpdateName
   });
 
   const table = useReactTable({

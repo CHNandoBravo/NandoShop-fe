@@ -18,4 +18,12 @@ export namespace ProductsInterfaces {
     export interface updateStockProduct {
         newStock: number
     }
+
+    export interface updatePriceProduct {
+        newPrice: number;
+    }
+
+    export interface updateNameProduct {
+        newName: string;
+    }
 }

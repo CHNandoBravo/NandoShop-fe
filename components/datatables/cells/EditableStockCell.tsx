@@ -6,16 +6,16 @@ type Props = {
   rowId: number
   stock: number
   isEditing: boolean
-  setEditingStockId: (id: number | null) => void
-  onUpdateStock: (id: number, newStock: number) => void
+  setEditingItemId: (id: number | null) => void
+  onUpdateNumber: (id: number, newStock: number) => void
 }
 
-export function EditableStockCell({
+export function EditableNumberCell({
   rowId,
   stock,
   isEditing,
-  setEditingStockId,
-  onUpdateStock,
+  setEditingItemId: setEditingStockId,
+  onUpdateNumber: onUpdateNumber,
 }: Props) {
   const [tempStock, setTempStock] = React.useState(stock)
 
@@ -26,7 +26,7 @@ export function EditableStockCell({
   const handleBlur = () => {
     setEditingStockId(null)
     if (tempStock !== stock) {
-      onUpdateStock(rowId, tempStock)
+      onUpdateNumber(rowId, tempStock)
     }
   }
 

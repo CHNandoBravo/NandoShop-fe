@@ -8,7 +8,9 @@ export namespace PathsApi {
         my_products: "/v1/my_products",
         createProduct: "/v1/product",
         deleteProduct: "/v1/product",
-        updateStockProduct: "/v1/product/stock"
+        updateStockProduct: "/v1/product/stock",
+        updateNameProduct: "/v1/product/name",
+        updatePriceProduct: "/v1/product/price"
     };
 
     export const getFullPath = (path: string) => `${BASE_URL}${path}`;
