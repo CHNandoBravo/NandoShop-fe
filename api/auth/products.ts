@@ -35,7 +35,7 @@ export async function myProducts() {
         });
 }
 
-export async function createProduct(data: ProductsInterfaces.createProduct) {
+export async function createProduct(data: FormData) {
     const url = PathsApi.getFullPath(PathsApi.Endpoints.createProduct);
     const token = localStorage.getItem("jwt");
     const config = {
@@ -43,6 +43,7 @@ export async function createProduct(data: ProductsInterfaces.createProduct) {
             Authorization: token ? `Bearer ${token}` : ""
         }
     };
+    
     return axios.post(url, data, config)
         .then(response => {
             toast.success("Producto creado con éxito."); 

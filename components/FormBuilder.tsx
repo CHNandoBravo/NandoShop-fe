@@ -26,29 +26,30 @@ export type FieldDefinition<T> = {
   label: string;
   placeholder?: string;
   description?: string;
-  type?: "text" | "number" | "select";
+  type?: "text" | "number" | "select" | "file";
   width?: string;
   options?: { label: string; value: any }[]; 
 };
 
 type FormBuilderProps<T extends FieldValues> = {
   schema: ZodTypeAny;
+  form: UseFormReturn<T>;
   defaultValues: DefaultValues<T>;
   fields: FieldDefinition<T>[];
   onSubmit: (data: T) => void;
 };
 
+
 export function FormBuilder<T extends FieldValues>({
+  form,
   schema,
   defaultValues,
   fields,
   onSubmit,
 }: FormBuilderProps<T>) {
-  const form = useForm<T>({
-    resolver: zodResolver(schema),
-    defaultValues,
-  });
-
+function isFile(value: unknown): value is File {
+  return value instanceof File;
+}
     return (
      <div className="w-full">
       <Form {...form}>
@@ -59,45 +60,66 @@ export function FormBuilder<T extends FieldValues>({
               control={form.control}
               name={field.name as any}
               render={({ field: controller }) => (
-                <FormItem className={`${field.width ?? "w-full"}`}>
+                <FormItem className={`${field.width ?? "w-full"} mt-3`}>
                   <FormLabel>{field.label}</FormLabel>
                   <FormControl>
                     {field.type === "select" && field.options ? (
-                      <Select
-                        onValueChange={(val) => controller.onChange(Number(val))}
-                        defaultValue={controller.value?.toString()}
-                        >
-                        <SelectTrigger>
-                          <SelectValue placeholder={field.placeholder} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {field.options.map((option) => (
-                            <SelectItem
-                              key={option.value}
-                              value={option.value.toString()}
-                            >
-                              {option.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                    <Select
+                      onValueChange={(val) => controller.onChange(Number(val))}
+                      defaultValue={controller.value?.toString()}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder={field.placeholder} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {field.options.map((option) => (
+                          <SelectItem key={option.value} value={option.value.toString()}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    ) : field.type === "file" ? (
+                      <div>
+                        <Input
+                          type="file"
+                          onChange={(e) => controller.onChange(e.target.files?.[0] ?? null)}
+                          ref={controller.ref}
+                          className="w-full"
+                        />
+                        {isFile(controller.value) && (
+                          <>
+                            <p className="text-sm text-muted-foreground mt-1">
+                              Archivo cargado: <strong>{controller.value.name}</strong>
+                            </p>
+                            {controller.value.type.startsWith("image/") && (
+                              <img
+                                src={URL.createObjectURL(controller.value)}
+                                alt="Preview"
+                                className="mt-2 max-h-40 object-contain rounded"
+                                onLoad={(e) => URL.revokeObjectURL((e.target as HTMLImageElement).src)} 
+                              />
+                            )}
+                          </>
+                        )}
+                        
+                      </div>
                     ) : (
                       <Input
                         placeholder={field.placeholder}
                         type={field.type || "text"}
                         onChange={(e) => {
-                            const value = e.target.value;
-                            if (field.type === "number") {
-                                controller.onChange(value === "" ? undefined : Number(value));
-                            } else {
-                                controller.onChange(value);
-                            }
-                            }}
+                          const value = e.target.value;
+                          if (field.type === "number") {
+                            controller.onChange(value === "" ? undefined : Number(value));
+                          } else {
+                            controller.onChange(value);
+                          }
+                        }}
                         value={controller.value ?? ""}
                         ref={controller.ref}
                         className="w-full"
-                        />
-
+                      />
                     )}
                   </FormControl>
                   {field.description && (

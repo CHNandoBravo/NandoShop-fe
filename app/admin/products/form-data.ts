@@ -5,7 +5,11 @@ import { z } from "zod"
 export const formSchema = z.object({
   name: z.string().min(1, { message: "El nombre es obligatorio." }),
   price: z.coerce.number({ invalid_type_error: "Debe ser un número" }).min(1000, { message: "El precio no puede ser negativo ni menor a 1000." }),
-
+  image: z
+    .instanceof(File, { message: "Debe seleccionar una imagen." })
+    .refine((file) => file.size > 0, {
+      message: "La imagen no puede estar vacía.",
+    }),
   stock: z
     .number({ invalid_type_error: "Debe ser un número" })
     .min(0, { message: "El stock no puede ser negativo." }),
@@ -23,7 +27,7 @@ export const initialData: ProductsInterfaces.createProduct = {
     categoryId: 1,
     price: 0,
     stock: 1,
-    description: ""
+    description: "",
 };
 
 export const fields: FieldDefinition<CreateProduct>[] = [
@@ -64,6 +68,13 @@ export const fields: FieldDefinition<CreateProduct>[] = [
     options: [
         { label: "Arte", value: 1 },
       ],
+  },
+  {
+    name: "image",
+    label: "Imagen del producto",
+    placeholder: "Ej: 100",
+    type: "file",
+    width: "w-full"
   },
   
 ];
