@@ -42,8 +42,6 @@ type FormBuilderProps<T extends FieldValues> = {
 
 export function FormBuilder<T extends FieldValues>({
   form,
-  schema,
-  defaultValues,
   fields,
   onSubmit,
 }: FormBuilderProps<T>) {

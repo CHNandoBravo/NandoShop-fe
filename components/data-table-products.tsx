@@ -80,6 +80,7 @@ export const schema = z.object({
   id: z.number(),
   description: z.string(),
   name: z.string(),
+  image: z.string(),
   category: z.string(),
   price: z.number(),
   stock: z.number(),
@@ -124,6 +125,15 @@ export function getColumns({
             onUpdateValue={handleUpdateName}
             />
         </>
+      ),
+    },
+    {
+      accessorKey: "image",
+      header: "Imagen",
+      cell: ({ row }) => (
+        <div className="w-20">
+         <img src={row.original.image} alt="" />
+        </div>
       ),
     },
     {

@@ -1,6 +1,6 @@
 "use client"
 import { FormBuilder } from "@/components/FormBuilder";
-import { CreateProduct, fields, formSchema, initialData } from "./form-data";
+import { CreateProduct, fieldsCreateProduct, formSchema, initialData } from "./form-data";
 import { useEffect, useState } from "react";
 import { ProductsInterfaces } from "@/interfaces/products";
 import { createProduct, myProducts } from "@/api/auth/products";
@@ -29,10 +29,16 @@ export default function CreateProductPage() {
     };
     fetchProducts();
     },[])
-
+    const initialDataCreateProduct: ProductsInterfaces.createProduct = {
+        name: "",
+        categoryId: 1,
+        price: 0,
+        stock: 1,
+        description: "",
+    };
     const form = useForm<CreateProduct>({
         resolver: zodResolver(formSchema),
-        defaultValues: initialData,
+        defaultValues: initialDataCreateProduct,
     });
     const handleSubmit = async (data: CreateProduct) => {
         try {
@@ -67,7 +73,7 @@ export default function CreateProductPage() {
                     <CardTitle>Crear producto</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <FormBuilder form={form} defaultValues={initialData} fields={fields} onSubmit={handleSubmit} schema={formSchema}/>
+                    <FormBuilder form={form} defaultValues={initialDataCreateProduct} fields={fieldsCreateProduct} onSubmit={handleSubmit} schema={formSchema}/>
                 </CardContent>
             </DragAndDropWrapper>
         </Card>
