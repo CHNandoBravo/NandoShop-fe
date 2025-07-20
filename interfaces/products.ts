@@ -9,12 +9,17 @@ export namespace ProductsInterfaces {
     export interface myProducts extends BaseProduct {
         id: number;
         category: string;
+        image: string;
     }
 
     export interface createProduct extends BaseProduct {
         categoryId: number;
     }
 
+    export interface listProduct extends BaseProduct {
+        categoryId: number;
+        image: string | null;
+    }
     export interface updateStockProduct {
         newStock: number
     }

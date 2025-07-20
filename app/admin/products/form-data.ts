@@ -21,16 +21,16 @@ export const formSchema = z.object({
 });
 
 export type CreateProduct = z.infer<typeof formSchema>;
-
-export const initialData: ProductsInterfaces.createProduct = {
+export const initialData: ProductsInterfaces.listProduct = {
     name: "",
     categoryId: 1,
     price: 0,
     stock: 1,
     description: "",
+    image: ""
 };
 
-export const fields: FieldDefinition<CreateProduct>[] = [
+export const fieldsCreateProduct: FieldDefinition<CreateProduct>[] = [
   {
     name: "name",
     label: "Nombre del producto",
