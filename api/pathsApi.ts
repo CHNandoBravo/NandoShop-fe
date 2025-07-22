@@ -1,3 +1,5 @@
+import { updateImageProduct } from "./auth/products";
+
 export namespace PathsApi {
     const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? ""; 
 
@@ -10,7 +12,8 @@ export namespace PathsApi {
         deleteProduct: "/v1/product",
         updateStockProduct: "/v1/product/stock",
         updateNameProduct: "/v1/product/name",
-        updatePriceProduct: "/v1/product/price"
+        updatePriceProduct: "/v1/product/price",
+        updateImageProduct: "/v1/product/image"
     };
 
     export const getFullPath = (path: string) => `${BASE_URL}${path}`;

@@ -68,13 +68,12 @@ import {
   Tabs,
   TabsContent,
 } from "@/components/ui/tabs"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuSeparator } from "./ui/dropdown-menu"
-import { DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { Tooltip } from "@radix-ui/react-tooltip"
 import { TooltipContent, TooltipTrigger } from "./ui/tooltip"
-import { deleteProduct, updateNameProduct, updatePriceProduct, updateStockProduct } from "@/api/auth/products"
+import { deleteProduct, updateImageProduct, updateNameProduct, updatePriceProduct, updateStockProduct } from "@/api/auth/products"
 import { EditableNumberCell } from "./datatables/cells/EditableStockCell"
 import { EditableStringCell } from "./datatables/cells/EditableStringCell"
+import { EditableFileCell } from "./datatables/cells/EditableFileCell"
 
 export const schema = z.object({
   id: z.number(),
@@ -98,7 +97,10 @@ export function getColumns({
   handleUpdatePrice,
   editingNameId,
   setEditingNameId,
-  handleUpdateName
+  handleUpdateName,
+  editingImageId,
+  setEditingImageId,
+  handleUpdateImage,  
 }: {
   handleDelete: (id: number) => void
   editingStockId: number | null
@@ -109,8 +111,14 @@ export function getColumns({
   handleUpdatePrice: (id: number, newPrice: number) => void,
   editingNameId: number | null
   setEditingNameId: (id: number | null) => void
-  handleUpdateName: (id: number, newName: string) => void
+  handleUpdateName: (id: number, newName: string) => void,
+  editingImageId: number | null
+  setEditingImageId: (id: number | null) => void
+  handleUpdateImage: (id: number, file: File) => void
 }): ColumnDef<z.infer<typeof schema>>[] {
+  const handleUpdateFile = () => {
+    alert("loco")
+  }
   return [
     {
       accessorKey: "name",
@@ -131,9 +139,13 @@ export function getColumns({
       accessorKey: "image",
       header: "Imagen",
       cell: ({ row }) => (
-        <div className="w-20">
-         <img src={row.original.image} alt="" />
-        </div>
+        <EditableFileCell
+          rowId={row.original.id}
+          imageUrl={row.original.image}
+          isEditing={editingImageId === row.original.id}
+          setEditingItemId={setEditingImageId}
+          onUpdateFile={handleUpdateImage}
+        />
       ),
     },
     {
@@ -244,6 +256,7 @@ export function DataTableProducts({
     [data]
   )
 
+  const [editingImageId, setEditingImageId] = React.useState<number | null>(null)
   const [editingStockId, setEditingStockId] = React.useState<number | null>(null)
   const [editingPriceId, setEditingPriceId] = React.useState<number | null>(null)
   const [editingNameId, setEditingNameId] = React.useState<number | null>(null)
@@ -254,6 +267,17 @@ export function DataTableProducts({
       )
     )
     updateStockProduct(id, {newStock});
+  }
+
+
+  const handleUpdateImage = (id: number, file: File) => {
+  const url = URL.createObjectURL(file) // vista previa inmediata
+  setData(prev =>
+    prev.map(product =>
+      product.id === id ? { ...product, image: url } : product
+    )
+  )
+  updateImageProduct(id, {image:file})
   }
 
   const handleUpdatePrice = (id: number, newPrice: number) => {
@@ -293,7 +317,10 @@ export function DataTableProducts({
     handleUpdatePrice,
     editingNameId,
     setEditingNameId,
-    handleUpdateName
+    handleUpdateName,
+    editingImageId,
+    handleUpdateImage,
+    setEditingImageId
   });
 
   const table = useReactTable({
