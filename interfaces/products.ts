@@ -31,4 +31,8 @@ export namespace ProductsInterfaces {
     export interface updateNameProduct {
         newName: string;
     }
+
+    export type ImageUploadRequest = {
+        image: File
+    }
 }

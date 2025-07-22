@@ -146,6 +146,23 @@ export async function updateNameProduct(
     }
 }
 
+export async function updateImageProduct(
+    id: number,
+    request: ProductsInterfaces.ImageUploadRequest
+) {
+    const url = PathsApi.getFullPath(PathsApi.Endpoints.updateImageProduct + "/" + id);
+    const config = { headers: getAuthHeaders() };
+    const formData = new FormData()
+    formData.append("image", request.image) 
+    try {
+        const response = await axios.put(url, formData, config);
+        toast.success("Producto actualizado con éxito.");
+        return response;
+    } catch (error) {
+        handleAxiosError(error);
+    }
+}
+
 function getAuthHeaders() {
     const token = localStorage.getItem("jwt");
     return {
