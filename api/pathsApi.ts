@@ -8,6 +8,7 @@ export namespace PathsApi {
         register: "/v1/auth/register",
         user_me: "/v1/auth/me",
         my_products: "/v1/my_products",
+        all_products: "/v1/all_products",
         createProduct: "/v1/product",
         deleteProduct: "/v1/product",
         updateStockProduct: "/v1/product/stock",

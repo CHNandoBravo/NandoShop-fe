@@ -1,6 +1,7 @@
 "use client";
 
 import HeroSidebar from "@/components/hero-sidebar";
+import ProductListShowMore from "@/components/product-list-show-more";
 import Image from "next/image";
 
 export default function Home() {  
@@ -36,9 +37,9 @@ export default function Home() {
             
           </div>
           <HeroSidebar />
-          
           {/* <div className="hero-curve hero-curve_two"></div> */}
         </div>
+        <ProductListShowMore />
       </section>
   );
 }
