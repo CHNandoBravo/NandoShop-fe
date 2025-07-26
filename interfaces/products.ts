@@ -5,7 +5,12 @@ export namespace ProductsInterfaces {
         stock: number;
         description: string
     }
-
+    export interface Product {
+        id: number,
+        image: string,
+        name: string,
+        price: number,
+    }
     export interface myProducts extends BaseProduct {
         id: number;
         category: string;
