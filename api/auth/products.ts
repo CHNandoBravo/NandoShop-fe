@@ -34,8 +34,65 @@ export async function myProducts() {
             throw error; // Lanza el error para que `useAsync` lo maneje
         });
 }
-export async function allProducts() {
-    const url = PathsApi.getFullPath(PathsApi.Endpoints.all_products);
+export async function allProducts(
+  onChunk: (product: any) => void,
+  params: { offset: number; limit: number; category?: string }
+) {
+  const query = new URLSearchParams({
+    offset: String(params.offset),
+    limit: String(params.limit),
+    ...(params.category && { category: params.category }),
+  });
+
+  const url = `${PathsApi.getFullPath(PathsApi.Endpoints.all_products)}?${query.toString()}`;
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Error en el servidor: ${response.status}`);
+  }
+
+  const reader = response.body?.getReader();
+  if (!reader) {
+    throw new Error("El cuerpo de la respuesta no tiene reader");
+  }
+
+  const decoder = new TextDecoder();
+  let buffer = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    buffer += decoder.decode(value, { stream: true });
+
+    const lines = buffer.split("\n");
+    buffer = lines.pop() || "";
+
+    for (const line of lines) {
+      if (line.trim()) {
+        try {
+          const product = JSON.parse(line);
+          onChunk(product);
+        } catch (e) {
+          console.error("Error parseando producto:", e);
+        }
+      }
+    }
+  }
+
+  if (buffer.trim()) {
+    try {
+      const product = JSON.parse(buffer);
+      onChunk(product);
+    } catch (e) {
+      console.error("Error parseando último producto:", e);
+    }
+  }
+}
+
+
+export async function random8Products() {
+    const url = PathsApi.getFullPath(PathsApi.Endpoints.random_8_products);
     return axios.get(url)
         .then(response => response)
         .catch(error => {

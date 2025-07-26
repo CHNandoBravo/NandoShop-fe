@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { HiMiniSquares2X2, HiMiniXMark } from "react-icons/hi2";
 import { IoFunnel } from "react-icons/io5";
 import { GoPlus } from "react-icons/go";
@@ -20,6 +20,9 @@ import {
 import { ProductsInterfaces } from '@/interfaces/products';
 import { allProducts } from '@/api/auth/products';
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
+import { ProductCard } from '@/components/ui/product-card';
+import HeroSidebar from '@/components/hero-sidebar';
+import { toast } from 'react-toastify';
 // import { XMarkIcon } from '@heroicons/react/24/outline'
 // import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
 
@@ -39,26 +42,61 @@ function classNames(...classes: any) {
 }
 
 export default function Example() {
-    const [loading, setLoading] = useState(false);
-    const [productsData, setProductsData] = useState<ProductsInterfaces.myProducts[]>([]);
-    useEffect(()=>{
-            const fetchProducts = async () => {
-            try {
-                setLoading(true);
-                const res = await allProducts();
-                setProductsData(res.data);
-            } catch (error) {
-            console.error("Error al obtener productos:", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchProducts();
-    },[])
+    const [page, setPage] = useState(0);
+const [loading, setLoading] = useState(false);
+const [hasMore, setHasMore] = useState(true);
+const [productsData, setProductsData] = useState<ProductsInterfaces.Product[]>([]);
+
+const LIMIT = 5;
+const observer = useRef<IntersectionObserver | null>(null);
+const lastProductRef = useCallback((node: any) => {
+  if (loading) return;
+  if (observer.current) observer.current.disconnect();
+
+  observer.current = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && hasMore) {
+      setPage((prev) => prev + 1);
+    }
+  });
+
+  if (node) observer.current.observe(node);
+}, [loading, hasMore]);
+
+useEffect(() => {
+  const loadProducts = async () => {
+    setLoading(true);
+
+    try {
+      let count = 0;
+      await allProducts((product) => {
+        count++;
+        setProductsData((prev) => [...prev, product]);
+      }, {
+        offset: page * LIMIT,
+        limit: LIMIT,
+      });
+
+      if (count < LIMIT) {
+        setHasMore(false); // no hay más productos
+      }
+    } catch (err) {
+      console.error("Error cargando productos:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  loadProducts();
+}, [page]);
+
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
   return (
-    <div className="bg-white">
+    <div className="bg-white section-container pt-4">
+      <div className='flex justify-between'>
+        <div className="playwrite h-full flex justify-center items-center"><i className="text-xl">NandoShop</i></div>
+        <HeroSidebar />
+      </div>
       <div>
         {/* Mobile filter dialog */}
         <Dialog open={mobileFiltersOpen} onClose={setMobileFiltersOpen} className="relative z-40 lg:hidden">
@@ -148,7 +186,7 @@ export default function Example() {
           </div>
         </Dialog>
 
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <main className="mx-auto max-w-7xl ">
           <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">Recién llegados</h1>
 
@@ -254,56 +292,15 @@ export default function Example() {
               {/* Product grid */}
               <div className="lg:col-span-3">
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-                    {productsData.map((product) => (
-                        <div key={product.id} className="group relative">
-                        <img
-                            alt={product.image}
-                            src={product.image}
-                            className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
-                        />
-                        <div className="mt-4 flex justify-between">
-                            <div>
-                            <h3 className="text-sm text-gray-700">
-                                <a href={"#"}>
-                                <span aria-hidden="true" className="absolute inset-0" />
-                                {product.name}
-                                </a>
-                            </h3>
-                            {/* <p className="mt-1 text-sm text-gray-500">{product.color}</p> */}
-                            </div>
-                            <p className="text-sm font-medium text-gray-900">${product.price}</p>
+                    {productsData.map((product, index) => {
+                      const isLast = index === productsData.length - 1;
+                      return (
+                        <div key={product.id} ref={isLast ? lastProductRef : null}>
+                          <ProductCard id={product.id} image={product.image} name={product.name} price={product.price} />
                         </div>
-                        </div>
-                    ))}
-                </div>
-                {/* pagination */}
-                <div className='mt-12'>
-                    <Pagination className=''>
-                    <PaginationContent>
-                        <PaginationItem>
-                        <PaginationPrevious href="#" />
-                        </PaginationItem>
-                        <PaginationItem>
-                        <PaginationLink href="#">1</PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                        <PaginationLink href="#" isActive>
-                            2
-                        </PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                        <PaginationLink href="#">3</PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                        <PaginationEllipsis />
-                        </PaginationItem>
-                        <PaginationItem>
-                        <PaginationNext href="#" />
-                        </PaginationItem>
-                    </PaginationContent>
-                    </Pagination>
-                </div>
-                
+                      );
+                    })}
+                </div>                
               </div>
             </div>
           </section>
