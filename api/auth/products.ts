@@ -36,12 +36,13 @@ export async function myProducts() {
 }
 export async function allProducts(
   onChunk: (product: any) => void,
-  params: { offset: number; limit: number; category?: string }
+  params: { offset: number; limit: number; category?: string; query: string }
 ) {
   const query = new URLSearchParams({
     offset: String(params.offset),
     limit: String(params.limit),
     ...(params.category && { category: params.category }),
+    query: String(params.query)
   });
 
   const url = `${PathsApi.getFullPath(PathsApi.Endpoints.all_products)}?${query.toString()}`;
