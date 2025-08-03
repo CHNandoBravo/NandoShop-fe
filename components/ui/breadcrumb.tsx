@@ -3,6 +3,42 @@ import { Slot } from "@radix-ui/react-slot"
 import { ChevronRight, MoreHorizontal } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import Link from "next/link";
+
+type Crumb = {
+  label: string;
+  href?: string;
+};
+
+interface CustomBreadcrumbProps {
+  items: Crumb[];
+  
+}
+export function CustomBreadcrumb({ items }: CustomBreadcrumbProps) {
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        {items.map((item, index) => (
+          <React.Fragment key={index}>
+            <BreadcrumbItem>
+              {item.href ? (
+                <BreadcrumbLink asChild>
+                  <Link href={item.href}>{item.label}</Link>
+                </BreadcrumbLink>
+              ) : (
+                <BreadcrumbPage>{item.label}</BreadcrumbPage>
+              )}
+            </BreadcrumbItem>
+
+            {index < items.length - 1 && <BreadcrumbSeparator />}
+          </React.Fragment>
+        ))}
+
+       
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+}
 
 const Breadcrumb = React.forwardRef<
   HTMLElement,

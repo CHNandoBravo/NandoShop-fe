@@ -192,12 +192,7 @@ useEffect(() => {
 
 
   return (
-    <div className="bg-white section-container pt-4">
-      <div className='flex justify-between'>
-        <div className="playwrite h-full flex justify-center items-center"><i className="text-xl">NandoShop</i></div>
-        <HeroSidebar />
-      </div>
-      <div>
+    <>
         {/* Mobile filter dialog */}
         <Dialog open={mobileFiltersOpen} onClose={setMobileFiltersOpen} className="relative z-40 lg:hidden">
           <DialogBackdrop
@@ -286,7 +281,8 @@ useEffect(() => {
           </div>
         </Dialog>
 
-        <main className="mx-auto max-w-7xl ">
+        <>
+
           <div className="flex items-baseline justify-between border-b border-gray-200 pt-24 pb-6">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">Recién llegados</h1>
 
@@ -459,8 +455,8 @@ useEffect(() => {
               </div>
             </div>
           </section>
-        </main>
-      </div>
-    </div>
+        </>
+        
+    </>
   )
 }
