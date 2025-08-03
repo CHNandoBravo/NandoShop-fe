@@ -1,5 +1,7 @@
 // ProductDetailPage.tsx
+"use client"
 import CheckoutButton from '@/components/checkout-bricks'
+import HeroSidebar from '@/components/hero-sidebar'
 import React from 'react'
 
 interface ProductDetailProps {
@@ -15,7 +17,7 @@ const ProductDetailPage: React.FC<ProductDetailProps> = ({
   description = 'Este es un producto de ejemplo con una descripción breve y clara. Ideal para mostrar cómo se ve una página de detalle de producto.',
   price = 0.00,
 }) => {
-    const preferenceId = 'tu_preference_id_generada_en_el_backend'
+    const preferenceId = '1230667395-6be485e0-0d0c-40b1-b47d-728f0e7373f1'
 
   return (
     <div className="bg-white section-container pt-4">
@@ -24,7 +26,7 @@ const ProductDetailPage: React.FC<ProductDetailProps> = ({
         <div className="playwrite h-full flex justify-center items-center">
           <i className="text-xl">NandoShop</i>
         </div>
-        {/* <HeroSidebar /> */}
+        <HeroSidebar />
       </div>
 
       {/* Contenido principal */}

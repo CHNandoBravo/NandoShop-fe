@@ -9,13 +9,14 @@ export namespace PathsApi {
         user_me: "/v1/auth/me",
         my_products: "/v1/my_products",
         all_products: "/v1/products/all",
-        random_8_products: "/v1/products/8",
+        random_8_products: "/v1/products/random/8",
         createProduct: "/v1/product",
         deleteProduct: "/v1/product",
         updateStockProduct: "/v1/product/stock",
         updateNameProduct: "/v1/product/name",
         updatePriceProduct: "/v1/product/price",
-        updateImageProduct: "/v1/product/image"
+        updateImageProduct: "/v1/product/image",
+        createPreference: "/v1/payments/create"
     };
 
     export const getFullPath = (path: string) => `${BASE_URL}${path}`;

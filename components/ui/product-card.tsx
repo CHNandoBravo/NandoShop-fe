@@ -17,7 +17,7 @@ export const ProductCard = ({
             <div className="mt-4 flex justify-between py-1 px-1">
                 <div>
                     <h3 className="text-ls text-gray-700 font-semibold tracking-tight">
-                        <a href={"#"}>
+                        <a href={`/products/${id}`}>
                             <span aria-hidden="true" className="absolute inset-0" />
                             {name}
                         </a>

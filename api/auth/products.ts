@@ -35,14 +35,14 @@ export async function myProducts() {
         });
 }
 export async function allProducts(
-  onChunk: (product: any) => void,
+  onChunk: (product: ProductsInterfaces.Product) => void,
   params: { offset: number; limit: number; category?: string; query: string }
 ) {
   const query = new URLSearchParams({
     offset: String(params.offset),
     limit: String(params.limit),
     ...(params.category && { category: params.category }),
-    query: String(params.query)
+    query: String(params.query),
   });
 
   const url = `${PathsApi.getFullPath(PathsApi.Endpoints.all_products)}?${query.toString()}`;
@@ -72,7 +72,7 @@ export async function allProducts(
     for (const line of lines) {
       if (line.trim()) {
         try {
-          const product = JSON.parse(line);
+          const product: ProductsInterfaces.Product = JSON.parse(line);
           onChunk(product);
         } catch (e) {
           console.error("Error parseando producto:", e);
@@ -83,7 +83,7 @@ export async function allProducts(
 
   if (buffer.trim()) {
     try {
-      const product = JSON.parse(buffer);
+      const product: ProductsInterfaces.Product = JSON.parse(buffer);
       onChunk(product);
     } catch (e) {
       console.error("Error parseando último producto:", e);
@@ -91,6 +91,36 @@ export async function allProducts(
   }
 }
 
+export async function productById() {
+    const url = PathsApi.getFullPath(PathsApi.Endpoints.my_products);
+    const token = localStorage.getItem("jwt");
+    const config = {
+        headers: {
+            Authorization: token ? `Bearer ${token}` : ""
+        }
+    };
+    return axios.get(url, config)
+        .then(response => response)
+        .catch(error => {
+            if (error.response) {
+                switch (error.response.status) {
+                    case 401:
+                        toast.error("Email y/o contraseña incorrectos.");
+                        break;
+                    case 500:
+                        toast.error("Error del servidor. Inténtalo de nuevo más tarde.");
+                        break;
+                    default:
+                        toast.error(error.response.data.message || "Ha ocurrido un error inesperado.");
+                }
+            } else if (error.request) {
+                toast.error("No se recibió respuesta del servidor. Verifica tu conexión.");
+            } else {
+                toast.error(`Error: ${error.message || "Error desconocido"}`);
+            }
+            throw error; // Lanza el error para que `useAsync` lo maneje
+        });
+}
 
 export async function random8Products() {
     const url = PathsApi.getFullPath(PathsApi.Endpoints.random_8_products);

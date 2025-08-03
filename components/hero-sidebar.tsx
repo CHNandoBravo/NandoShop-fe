@@ -1,3 +1,4 @@
+"use client"
 import { BsHandbag } from "react-icons/bs";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useEffect, useState } from "react";
@@ -75,7 +76,7 @@ export default function HeroSidebar () {
                 
                   <Menubar className="h-full border-none shadow-none p-0">
                     <MenubarMenu>
-                      <MenubarTrigger className="p-0 h-full"><Button className="rounded-full h-full"><VscMenu /></Button></MenubarTrigger>
+                      <MenubarTrigger className="p-0 h-full"><div className="flex items-center p-4 rounded-full h-full bg-primary text-primary-foreground shadow hover:bg-primary/90"><VscMenu /></div></MenubarTrigger>
                         <MenubarContent>
                         {
                           !userData?

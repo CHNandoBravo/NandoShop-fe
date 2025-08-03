@@ -11,6 +11,13 @@ export namespace ProductsInterfaces {
         name: string,
         price: number,
     }
+    export interface ProductDetail {
+        id: number,
+        image: string,
+        name: string,
+        price: number,
+        description: string
+    }
     export interface myProducts extends BaseProduct {
         id: number;
         category: string;
