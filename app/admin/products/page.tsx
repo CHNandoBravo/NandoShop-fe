@@ -1,6 +1,6 @@
 "use client"
 import { FormBuilder } from "@/components/FormBuilder";
-import { CreateProduct, fieldsCreateProduct, formSchema, initialData } from "./form-data";
+import { CreateProduct, fieldsCreateProduct, formSchema } from "./form-data";
 import { useEffect, useState } from "react";
 import { ProductsInterfaces } from "@/interfaces/products";
 import { createProduct, myProducts } from "@/api/auth/products";
@@ -19,6 +19,7 @@ export default function CreateProductPage() {
        const fetchProducts = async () => {
         try {
             setLoading(true);
+            console.log(createProductData)
             const res = await myProducts();
             setProductsData(res.data);
         } catch (error) {

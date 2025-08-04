@@ -7,9 +7,33 @@ interface CheckoutButtonProps {
   preferenceId: string
 }
 
+// Tipos mejor definidos para evitar `any`
+interface BricksBuilder {
+  create(
+    name: "wallet",
+    containerId: string,
+    options: {
+      initialization: { preferenceId: string }
+      customization?: {
+        texts?: {
+          valueProp?: string
+        }
+      }
+    }
+  ): Promise<void>
+}
+
+interface MercadoPagoInstance {
+  bricks(): BricksBuilder
+}
+
+interface MercadoPagoConstructor {
+  new (key: string, options?: object): MercadoPagoInstance
+}
+
 declare global {
   interface Window {
-    MercadoPago: any
+    MercadoPago: MercadoPagoConstructor
   }
 }
 
@@ -22,7 +46,9 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ preferenceId }) => {
     initMercadoPago("APP_USR-f87d9376-8b7e-4980-8cf7-ace07d639ad0", { locale: "es-AR" })
 
     const renderWalletBrick = async () => {
-      const mp = new window.MercadoPago("APP_USR-f87d9376-8b7e-4980-8cf7-ace07d639ad0", { locale: "es-AR" })
+      const mp = new window.MercadoPago("APP_USR-f87d9376-8b7e-4980-8cf7-ace07d639ad0", {
+        locale: "es-AR",
+      })
       const bricksBuilder = mp.bricks()
 
       await bricksBuilder.create("wallet", "wallet_container", {
@@ -40,7 +66,6 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ preferenceId }) => {
     renderWalletBrick()
     alreadyRendered.current = true
 
-    // Opcional: cleanup cuando se desmonte
     return () => {
       const walletContainer = document.getElementById("wallet_container")
       if (walletContainer) walletContainer.innerHTML = ""

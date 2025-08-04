@@ -4,7 +4,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useEffect, useState } from "react";
 import { userMe } from "@/api/auth/user_me";
 import { AuthInterfaces } from "@/interfaces/auth";
-import { Button } from "./ui/button";
 import { VscMenu } from "react-icons/vsc";
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from "./ui/menubar";
 export default function HeroSidebar () {
