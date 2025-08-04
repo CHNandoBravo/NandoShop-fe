@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { HiMiniSquares2X2, HiMiniXMark } from "react-icons/hi2";
 import { IoFunnel } from "react-icons/io5";
 import { GoPlus } from "react-icons/go";
-import { AiOutlineMinus } from "react-icons/ai";
 
 import {
   Dialog,
@@ -13,20 +12,11 @@ import {
   DisclosureButton,
   DisclosurePanel,
   Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
 } from '@headlessui/react'
 import { ProductsInterfaces } from '@/interfaces/products';
 import { allProducts } from '@/api/auth/products';
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
 import { ProductCard } from '@/components/ui/product-card';
-import HeroSidebar from '@/components/hero-sidebar';
-import { toast } from 'react-toastify';
 import Link from 'next/link';
-// import { XMarkIcon } from '@heroicons/react/24/outline'
-// import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
-
 
 const filters = [
   {
@@ -38,9 +28,6 @@ const filters = [
   },
 ]
 
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export default function Example() {
 const [page, setPage] = useState(0);
@@ -52,7 +39,7 @@ const [isSearching, setIsSearching] = useState(false);
 
 const LIMIT = 50;
 const observer = useRef<IntersectionObserver | null>(null);
-const lastProductRef = useCallback((node: any) => {
+const lastProductRef = useCallback((node: HTMLDivElement | null) => {
   if (loading) return;
   if (observer.current) observer.current.disconnect();
 
@@ -127,7 +114,7 @@ useEffect(() => {
 
   setLoading(true);
    // limpiar resultados anteriores
-  let results: ProductsInterfaces.Product[] = [];
+  const results: ProductsInterfaces.Product[] = [];
   setPage(0)
   await allProducts((product) => {
     results.push(product);
@@ -406,7 +393,7 @@ useEffect(() => {
                             <div className='absolute w-full h-auto bg-white z-[1]' ref={searchRef}>
                               {
                                 searchList.map((product:ProductsInterfaces.Product) => (
-                                  <Link href='#' className=''>
+                                  <Link href='#' className='' key={product.id}>
                                     <div className='w-full h-full p-4 hover:bg-gray-50'>
                                       { product.name }
                                     </div>

@@ -1,12 +1,20 @@
 "use client"
 
-import { createPreference } from "@/api/auth/payment"
 import React, { useState } from "react"
 import { toast } from "react-toastify"
+import { createPreference } from "@/api/auth/payment"
 
 interface Props {
   idProduct: number
   quantity: number
+}
+
+// Interfaz local para evitar conflictos con definiciones globales
+interface MercadoPagoCheckout {
+  checkout: (options: {
+    preference: { id: string }
+    autoOpen: boolean
+  }) => void
 }
 
 const MercadoPagoButton = ({ idProduct, quantity }: Props) => {
@@ -24,20 +32,22 @@ const MercadoPagoButton = ({ idProduct, quantity }: Props) => {
         return
       }
 
-      const mp = new window.MercadoPago(
-        "TEST-2be7f803-8980-4710-aebb-0346766c0310",
-        { locale: "es-AR" }
-      )
+      const MercadoPago = (window as unknown as { MercadoPago: new (
+        publicKey: string,
+        options?: { locale?: string }
+      ) => MercadoPagoCheckout }).MercadoPago
+
+      const mp = new MercadoPago(process.env.NEXT_PUBLIC_MP_TEST!, {
+        locale: "es-AR",
+      })
 
       mp.checkout({
-        preference: {
-          id: preferenceId,
-        },
+        preference: { id: preferenceId },
         autoOpen: true,
       })
     } catch (error) {
-      // El error ya se maneja en createPreference, opcional mostrar algo extra acá
       console.error("Error en el flujo de pago:", error)
+      toast.error("Ocurrió un error al procesar el pago.")
     } finally {
       setLoading(false)
     }

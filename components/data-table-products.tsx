@@ -40,13 +40,10 @@ import {
   ChevronRightIcon,
   ChevronsLeftIcon,
   ChevronsRightIcon,
-  EllipsisVertical,
   Trash,
 } from "lucide-react"
 import { z } from "zod"
 
-import { useIsMobile } from "@/hooks/use-mobile"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import {
@@ -74,6 +71,7 @@ import { deleteProduct, updateImageProduct, updateNameProduct, updatePriceProduc
 import { EditableNumberCell } from "./datatables/cells/EditableStockCell"
 import { EditableStringCell } from "./datatables/cells/EditableStringCell"
 import { EditableFileCell } from "./datatables/cells/EditableFileCell"
+import { Badge } from "./ui/badge"
 
 export const schema = z.object({
   id: z.number(),
@@ -116,9 +114,6 @@ export function getColumns({
   setEditingImageId: (id: number | null) => void
   handleUpdateImage: (id: number, file: File) => void
 }): ColumnDef<z.infer<typeof schema>>[] {
-  const handleUpdateFile = () => {
-    alert("loco")
-  }
   return [
     {
       accessorKey: "name",

@@ -1,6 +1,5 @@
 "use client"
 import { AppSidebar } from "@/components/app-sidebar"
-import { DataTable } from "@/components/data-table-products"
 import { SiteHeader } from "@/components/site-header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 
@@ -19,9 +18,10 @@ export default function LayoutAdmin({
   useEffect(() => {
     const fetchUser = async () => {
     try {
-        const res = await myProducts(); // ⚠️ Cambiá esta URL según tu backend
-        setProductsData(res.data);
-        
+      console.log(productsData);
+      console.log(loading)
+      const res = await myProducts(); // ⚠️ Cambiá esta URL según tu backend
+      setProductsData(res.data);
     } catch (error) {
         console.error("Fallo en fetch:", error);
     } finally {

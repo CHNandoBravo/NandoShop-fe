@@ -1,12 +1,11 @@
 
-import { z, ZodTypeAny } from "zod";
+import { ZodTypeAny } from "zod";
 import {
-  useForm,
   FieldValues,
   UseFormReturn,
   DefaultValues,
+  Path,
 } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,15 +20,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
+
 export type FieldDefinition<T> = {
-  name: keyof T;
+  name: Path<T>;  // <-- aquí
   label: string;
   placeholder?: string;
   description?: string;
   type?: "text" | "number" | "select" | "file";
   width?: string;
-  options?: { label: string; value: any }[]; 
-};
+} & (
+  { type: "select"; options: { label: string; value: string|number }[] } |
+  { type?: Exclude<"text" | "number" | "file", "select">; options?: never }
+);
+
 
 type FormBuilderProps<T extends FieldValues> = {
   schema: ZodTypeAny;
@@ -56,7 +59,7 @@ function isFile(value: unknown): value is File {
             <FormField
               key={String(field.name)}
               control={form.control}
-              name={field.name as any}
+              name={field.name}
               render={({ field: controller }) => (
                 <FormItem className={`${field.width ?? "w-full"} mt-3`}>
                   <FormLabel>{field.label}</FormLabel>

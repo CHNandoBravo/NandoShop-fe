@@ -11,6 +11,7 @@ export default function ProductListShowMore() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
+        console.log(loading)
         const res = await random8Products();
         setProductsData(res.data);
       } catch (error) {
@@ -28,7 +29,7 @@ export default function ProductListShowMore() {
 
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {productsData.map((product) => (
-            <ProductCard id={product.id} image={product.image} name={product.name} price={product.price} />
+            <ProductCard key={product.id} id={product.id} image={product.image} name={product.name} price={product.price} />
           ))}
         </div>
 

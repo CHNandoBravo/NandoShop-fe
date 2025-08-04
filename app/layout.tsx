@@ -46,7 +46,7 @@ export default function RootLayout({
       <body
         className={`${rowdies.variable} ${playwrite_ES.variable} ${geistSans.variable} ${geistMono.variable} ${afacad_Flux.variable} antialiased`}
       >
-        <script src="https://sdk.mercadopago.com/js/v2"></script>
+        <script src="https://sdk.mercadopago.com/js/v2" async></script>
         <GoogleOAuthProvider clientId="1072765750170-3epf8sq91g6j4ihl8gm36lekkkke2iat.apps.googleusercontent.com">
         <ToastContainer
           position="top-right"
