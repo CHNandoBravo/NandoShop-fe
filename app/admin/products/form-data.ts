@@ -1,15 +1,17 @@
 import { FieldDefinition } from "@/components/FormBuilder";
 import { ProductsInterfaces } from "@/interfaces/products";
 import { z } from "zod"
+const isBrowser = typeof window !== "undefined";
 
 export const formSchema = z.object({
   name: z.string().min(1, { message: "El nombre es obligatorio." }),
   price: z.coerce.number({ invalid_type_error: "Debe ser un número" }).min(1000, { message: "El precio no puede ser negativo ni menor a 1000." }),
-  image: z
-    .instanceof(File, { message: "Debe seleccionar una imagen." })
-    .refine((file) => file.size > 0, {
-      message: "La imagen no puede estar vacía.",
-    }),
+  image: z.any().refine((file) => {
+  if (!isBrowser) return true; // 🧠 evitar validación en el server
+    return file instanceof File && file.size > 0;
+  }, {
+    message: "Debe seleccionar una imagen válida.",
+  }),
   stock: z
     .number({ invalid_type_error: "Debe ser un número" })
     .min(0, { message: "El stock no puede ser negativo." }),

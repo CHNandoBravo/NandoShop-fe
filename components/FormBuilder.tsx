@@ -48,9 +48,9 @@ export function FormBuilder<T extends FieldValues>({
   fields,
   onSubmit,
 }: FormBuilderProps<T>) {
-function isFile(value: unknown): value is File {
-  return value instanceof File;
-}
+const isFile = (val: unknown): val is File =>
+  typeof window !== "undefined" && val instanceof File;
+
     return (
      <div className="w-full">
       <Form {...form}>

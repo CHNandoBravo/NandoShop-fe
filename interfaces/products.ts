@@ -26,6 +26,7 @@ export namespace ProductsInterfaces {
 
     export interface createProduct extends BaseProduct {
         categoryId: number;
+        image?: File; 
     }
 
     export interface listProduct extends BaseProduct {
