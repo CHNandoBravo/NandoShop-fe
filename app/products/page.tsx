@@ -393,7 +393,7 @@ useEffect(() => {
                             <div className='absolute w-full h-auto bg-white z-[1]' ref={searchRef}>
                               {
                                 searchList.map((product:ProductsInterfaces.Product) => (
-                                  <Link href='#' className='' key={product.id}>
+                                  <Link href={`/products/${product.id}`} className='' key={product.id}>
                                     <div className='w-full h-full p-4 hover:bg-gray-50'>
                                       { product.name }
                                     </div>

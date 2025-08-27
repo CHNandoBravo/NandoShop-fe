@@ -11,8 +11,12 @@ export namespace AuthInterfaces {
     }
     export interface UserMeResponse {
         email: string;
-        role: string;
+        role: Role;
         lastName: string;
         firstName: string;
     }
+}
+export enum Role {
+  SELLER = "SELLER",
+  USER = "USER",
 }

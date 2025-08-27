@@ -41,8 +41,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
   return (
     <html lang="en">
+      <head>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DQGL3EW5VX"></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DQGL3EW5VX');
+          `
+        }} />
+
+      </head>
       <body
         className={`${rowdies.variable} ${playwrite_ES.variable} ${geistSans.variable} ${geistMono.variable} ${afacad_Flux.variable} antialiased`}
       >

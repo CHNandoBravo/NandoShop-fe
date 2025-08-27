@@ -3,7 +3,7 @@ import { BsHandbag } from "react-icons/bs";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useEffect, useState } from "react";
 import { userMe } from "@/api/auth/user_me";
-import { AuthInterfaces } from "@/interfaces/auth";
+import { AuthInterfaces, Role } from "@/interfaces/auth";
 import { VscMenu } from "react-icons/vsc";
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from "./ui/menubar";
 export default function HeroSidebar () {
@@ -77,6 +77,14 @@ export default function HeroSidebar () {
                     <MenubarMenu>
                       <MenubarTrigger className="p-0 h-full"><div className="flex items-center p-4 rounded-full h-full bg-primary text-primary-foreground shadow hover:bg-primary/90"><VscMenu /></div></MenubarTrigger>
                         <MenubarContent>
+                          {
+                            userData?.role == Role.SELLER ?
+                              <MenubarItem>
+                                <a href="/admin/products">Dashboard</a>
+                              </MenubarItem>
+                            :
+                            <></>
+                          }
                         {
                           !userData?
                             <>
