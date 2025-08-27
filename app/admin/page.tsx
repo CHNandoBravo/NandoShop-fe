@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { HiArrowTrendingDown, HiArrowTrendingUp } from "react-icons/hi2";
 
